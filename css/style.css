@@ -3,15 +3,15 @@
 ========================================= */
 
 :root {
-    --bg: #f8f5ef;
-    --bg-light: #fffdf9;
-    --text: #171717;
-    --text-light: #686868;
-    --accent: #b56d4b;
-    --accent-dark: #8f5137;
-    --white: #ffffff;
-    --border: #ded9d0;
-    --shadow: 0 20px 60px rgba(23, 23, 23, 0.08);
+    --bg: #0B1020;
+    --bg-light: #0F1730;
+    --text: #E6EDF7;
+    --text-light: #9AA8C1;
+    --accent: #22D3EE;
+    --accent-dark: #0EA5C4;
+    --white: #121A2F;
+    --border: #25324F;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 
     --font-main: "DM Sans", sans-serif;
     --font-title: "Playfair Display", serif;
@@ -118,7 +118,7 @@ button {
     left: 0;
     z-index: 1000;
     width: 100%;
-    background: rgba(248, 245, 239, 0.94);
+    background: rgba(12, 12, 12, 0.94);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(222, 217, 208, 0.7);
 }
@@ -314,6 +314,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .profile-card {
