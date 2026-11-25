@@ -1,0 +1,384 @@
+/* Thème sombre numérique : à charger APRÈS style.css */
+
+:root {
+    color-scheme: dark;
+    --bg: #0B1020;
+    --bg-light: #0F1730;
+    --text: #E6EDF7;
+    --text-light: #9AA8C1;
+    --accent: #22D3EE;
+    --accent-dark: #0EA5C4;
+    --violet: #8B5CF6;
+    --white: #121A2F;          /* surface des cartes */
+    --border: #25324F;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+::selection { background: var(--violet); color: #fff; }
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.header { background: rgba(var(--bg-rgb), 0.85); }
+
+/* Accueil : halo lumineux discret */
+.hero {
+    background:
+        radial-gradient(600px 400px at 85% 20%, rgba(var(--violet-rgb), 0.18), transparent 70%),
+        radial-gradient(500px 400px at 10% 90%, rgba(var(--accent-rgb), 0.12), transparent 70%);
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Boutons */
+.btn-primary,
+.btn-light {
+    background: linear-gradient(135deg, var(--accent), var(--violet));
+    color: var(--bg);
+}
+.btn-primary:hover { background: linear-gradient(135deg, var(--accent), var(--violet)); filter: brightness(1.12); }
+.btn-secondary { color: var(--text); }
+.btn-secondary:hover { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.08); }
+
+/* Petits labels en police "code" */
+.eyebrow,
+.section-label,
+.section-number,
+.project-number,
+.project-category,
+.experience-date span,
+.timeline-content > span,
+.profile-card-content span,
+.floating-card span {
+    font-family: var(--font-mono);
+}
+
+/* Cartes */
+.profile-card,
+.floating-card,
+.skill-card,
+.project-card,
+.experience-card,
+.highlight-card {
+    border-color: var(--border);
+}
+.profile-card { box-shadow: var(--shadow), 0 0 40px rgba(var(--accent-rgb), 0.12); }
+.highlight-card { background: var(--white); }
+.skill-card:hover,
+.project-card:hover,
+.highlight-card:hover { border-color: var(--accent); }
+.skill-card:hover { box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.12); }
+
+.skill-icon { background: rgba(var(--accent-rgb), 0.1); font-family: var(--font-mono); }
+
+/* Étiquettes */
+.skill-tags span,
+.project-tech span,
+.experience-tags span {
+    background: rgba(var(--accent-rgb), 0.08);
+    border-color: rgba(var(--accent-rgb), 0.28);
+    color: var(--accent);
+}
+.experience-badge { background: rgba(var(--violet-rgb), 0.16); color: var(--violet-soft); }
+.project-category { color: var(--accent); border: 1px solid var(--border); }
+
+/* Projets */
+.project-card { background: var(--white); }
+.project-image { background: var(--bg); }
+.project-result { color: var(--text-light); }
+.project-result strong { color: var(--accent); }
+
+/* Bandeau "Une opportunité ?" */
+.cta {
+    background:
+        radial-gradient(700px 300px at 50% 0%, rgba(var(--violet-rgb), 0.25), transparent 70%),
+        var(--bg-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+.cta .section-label { color: var(--accent); }
+.cta p:not(.section-label) { color: var(--text-light); }
+
+/* Disponibilité */
+.availability-dot { background: #34D399; box-shadow: 0 0 10px #34D399; }
+
+/* Pied de page */
+.footer { background: var(--bg); }
+
+
+/* =========================================
+   NUANCES DE FOND (sections en dégradés)
+========================================= */
+
+body {
+    background:
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 50%, var(--bg) 100%);
+}
+
+.about {
+    background: linear-gradient(160deg, var(--bg-light) 0%, var(--bg-high) 100%);
+}
+
+.skills {
+    background:
+        radial-gradient(700px 400px at 100% 0%, rgba(var(--accent-rgb), 0.07), transparent 70%),
+        var(--bg);
+}
+
+.projects {
+    background: linear-gradient(200deg, var(--bg-high) 0%, var(--bg-light) 60%, var(--bg) 100%);
+}
+
+.experience {
+    background:
+        radial-gradient(700px 400px at 0% 100%, rgba(var(--violet-rgb), 0.09), transparent 70%),
+        var(--bg);
+}
+
+.education {
+    background: linear-gradient(160deg, var(--bg-light) 0%, var(--bg-high) 100%);
+}
+
+.contact {
+    background:
+        radial-gradient(600px 400px at 90% 10%, rgba(var(--accent-rgb), 0.08), transparent 70%),
+        var(--bg);
+}
+
+/* Accueil : dégradé qui bouge lentement */
+.hero {
+    background-size: 140% 140%, 140% 140%;
+    animation: heroGlow 14s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    from { background-position: 0% 0%, 100% 100%; }
+    to   { background-position: 100% 50%, 0% 40%; }
+}
+
+
+/* =========================================
+   ANIMATIONS DES BOUTONS
+========================================= */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+                border-color 0.3s ease, background 0.3s ease;
+}
+
+/* Reflet lumineux qui traverse le bouton au survol */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    z-index: -1;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+.btn:hover::before { left: 130%; }
+
+.btn:hover { transform: translateY(-4px) scale(1.03); }
+.btn:active { transform: translateY(-1px) scale(0.98); }
+
+/* Boutons dégradés : halo qui pulse doucement */
+.btn-primary,
+.btn-light {
+    background-size: 200% 100%;
+    animation: btnPulse 2.8s ease-in-out infinite;
+}
+
+.btn-primary:hover,
+.btn-light:hover {
+    background-position: 100% 0;
+    animation: none;
+    box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.45), 0 0 0 4px rgba(var(--violet-rgb), 0.2);
+}
+
+@keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.45); }
+    50%      { box-shadow: 0 0 0 10px rgba(var(--accent-rgb), 0); }
+}
+
+/* Bouton secondaire : contour lumineux */
+.btn-secondary:hover {
+    box-shadow: 0 0 22px rgba(var(--accent-rgb), 0.3);
+}
+
+/* Liens "Voir le projet" et "Parlons de mon alternance" : flèche qui avance */
+.project-link {
+    gap: 6px;
+    transition: gap 0.3s ease, color 0.3s ease;
+}
+.project-link:hover { gap: 12px; color: var(--text); }
+
+/* Liens de contact : décalage et lueur au survol */
+.contact-item {
+    transition: padding-left 0.3s ease, background 0.3s ease;
+}
+.contact-item:hover {
+    padding-left: 14px;
+    background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.08), transparent);
+}
+
+/* Navigation : le lien actif s'éclaire */
+.nav a:hover { color: var(--accent); }
+.nav a::after { background: linear-gradient(90deg, var(--accent), var(--violet)); }
+
+/* Respect de "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+    .hero, .btn-primary, .btn-light { animation: none; }
+    .btn::before { display: none; }
+}
+
+
+/* =========================================
+   AJOUTS POUR script.js
+========================================= */
+
+/* Ombre du header au scroll (classe ajoutée par le JS) */
+.header { transition: box-shadow 0.3s ease, background 0.3s ease; }
+.header.scrolled {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    background: rgba(var(--bg-rgb), 0.95);
+}
+
+/* Lien du menu correspondant à la section visible */
+.nav a.active { color: var(--accent); }
+.nav a.active::after { width: 100%; }
+
+
+/* =========================================
+   ANIMATIONS AJOUTÉES PAR script.js
+========================================= */
+
+/* Barre de progression en haut de la page */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1100;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--violet));
+    transform: scaleX(0);
+    transform-origin: left;
+    pointer-events: none;
+}
+
+/* Bouton retour en haut */
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 900;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.back-to-top:hover {
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.4);
+    transform: translateY(-4px);
+}
+
+/* Lueur sous la souris sur les cartes */
+.skill-card,
+.project-card,
+.highlight-card,
+.experience-card { position: relative; }
+
+.skill-card::after,
+.project-card::after,
+.highlight-card::after,
+.experience-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+        280px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(var(--accent-rgb), 0.14),
+        transparent 70%
+    );
+    transition: opacity 0.3s ease;
+}
+.skill-card:hover::after,
+.project-card:hover::after,
+.highlight-card:hover::after,
+.experience-card:hover::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-progress, .back-to-top { transition: none; }
+}
+
+
+/* =========================================
+   TEXTE QUI S'ÉCRIT + CHIFFRES ANIMÉS
+========================================= */
+
+.typed-line {
+    min-height: 1.8em;                 /* évite que la page saute pendant la frappe */
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.typed-prefix { color: var(--text-light); }
+
+.typed-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    background: var(--accent);
+    animation: cursorBlink 0.9s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+    50% { opacity: 0; }
+}
+
+/* Chiffres des résultats */
+.count {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;  /* les chiffres gardent la même largeur */
+    color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typed-cursor { animation: none; }
+}
